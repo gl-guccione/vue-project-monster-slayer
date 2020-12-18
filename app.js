@@ -6,19 +6,34 @@ const game = Vue.createApp({
   data() {
     return {
       playerHealth: 100,
-      monsterHealth: 100
+      monsterHealth: 100,
+      counterSpecial: 0
     };
+  },
+  computed: {
+    monsterBarStyles() {
+      return {width: this.monsterHealth + '%'};
+    },
+    playerBarStyles() {
+      return {width: this.playerHealth + '%'};
+    }
   },
   methods: {
     attackMonster() {
       const attackValue = getRandomValue(5, 12);
       this.monsterHealth -= attackValue;
-      console.log(this.monsterHealth);
+      this.counterSpecial++;
       this.attackPlayer();
     },
     attackPlayer() {
       const attackValue = getRandomValue(8, 15);
       this.playerHealth -= attackValue;
+    },
+    specialAttack() {
+      const attackValue = getRandomValue(10, 25);
+      this.monsterHealth -= attackValue;
+      this.counterSpecial = 0,
+      this.attackPlayer();
     }
   }
 
