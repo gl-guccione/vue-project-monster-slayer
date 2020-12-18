@@ -31,7 +31,7 @@
       </section>
       <section id="controls">
         <button @click="attackMonster">ATTACK</button>
-        <button v-if="counterSpecial > 2" @click="specialAttack">SPECIAL ATTACK</button>
+        <button :disabled="counterSpecial < 3" @click="specialAttack">SPECIAL ATTACK</button>
         <button>HEAL</button>
         <button>SURRENDER</button>
       </section>
