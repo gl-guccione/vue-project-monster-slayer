@@ -74,6 +74,9 @@ const game = Vue.createApp({
         this.playerHealth += healValue;
       }
       this.attackPlayer();
+    },
+    surrender() {
+      this.playerHealth = 0;
     }
   }
 
