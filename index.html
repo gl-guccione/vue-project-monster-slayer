@@ -39,7 +39,7 @@
       <section id="controls" v-if="!winner">
         <button @click="attackMonster">ATTACK</button>
         <button :disabled="counterSpecial < 3" @click="specialAttack">SPECIAL ATTACK</button>
-        <button @click="healPlayer">HEAL</button>
+        <button :disabled="counterHeal < 2" @click="healPlayer">HEAL</button>
         <button @click="surrender">SURRENDER</button>
       </section>
       <section id="log" class="container">

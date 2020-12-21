@@ -8,6 +8,7 @@ const game = Vue.createApp({
       playerHealth: 100,
       monsterHealth: 100,
       counterSpecial: 0,
+      counterHeal: 0,
       winner: null,
       battleLogs: []
     };
@@ -50,12 +51,14 @@ const game = Vue.createApp({
       this.playerHealth = 100;
       this.winner = null;
       this.counterSpecial = 0;
+      this.counterHeal = 0;
       this.battleLogs= [];
     },
     attackMonster() {
       const attackValue = getRandomValue(5, 12);
       this.monsterHealth -= attackValue;
       this.counterSpecial++;
+      this.counterHeal++;
       this.battleLogs.unshift('Player attacks monster -' + attackValue + ' points');
       this.attackPlayer();
     },
@@ -72,6 +75,7 @@ const game = Vue.createApp({
       this.attackPlayer();
     },
     healPlayer() {
+      this.counterHeal = 0;
       const healValue = getRandomValue(10, 25);
       if (this.playerHealth + healValue > 100) {
         this.playerHealth = 100;
